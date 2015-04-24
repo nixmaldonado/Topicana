@@ -1,0 +1,20 @@
+
+<% unless comment.new_record? %>
+
+<div class="comment">
+
+  <div class="comment-content">
+    <br>
+    <p><%= comment.user.email %> said:</p>
+    <p><%= comment.body %></p>
+    <p class="comment-detail"><%= time_ago_in_words(comment.created_at) %> ago</p>
+    <% unless @comment.flagged_at? %>
+      <%#= link_to "Un-Flag", unflag_topic_comment_path, method: :put, data: {confirm: "Are you sure man?" } %>
+      <% else %>
+        <%#= link_to "Flag", [:flag, :topic, :comment], method: :put, data: {confirm: "Are you sure man?" } %>
+    <% end -%>
+    <br>
+  </div>
+</div>
+
+<% end -%>

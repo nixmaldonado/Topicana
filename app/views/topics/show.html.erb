@@ -1,0 +1,14 @@
+<h2><%= @topic.title %></h2>
+<p><%= @topic.body %></p>
+
+<hr>
+<h3> Comments </h3>
+<% if @topic.comments.any? %>
+<div class="commentsList">
+  <%= render @topic.comments %>
+</div>
+<% end -%>
+
+<div class="commentsForm">
+  <%= render "comments/form" %>
+</div>
