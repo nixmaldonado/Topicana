@@ -1,5 +1,10 @@
 <h2><%= @topic.title %></h2>
 <p><%= @topic.body %></p>
+          <% unless current_user && current_user.already_favorited?(@topic) %>
+          <%= link_to "Favorite", favorite_path(@topic, type: "favorite"), method: :put %>
+            <% else %>
+          <%= link_to "Unfavorite", favorite_path(@topic, type: "unfavorite"), method: :put %>
+          <% end -%>
 
 <hr>
 <h3> Comments </h3>

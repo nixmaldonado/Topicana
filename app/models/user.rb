@@ -6,7 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :topics
   has_many :comments
-  has_many :favorited
-  has_many :flaggeds
-  has_many :flagged_comments, through: :flaggeds, source: :comment
+  has_many :favorites
+  has_many :favorited_topics, through: :favorites, source: :topic
+
+    def already_favorited?(topic)
+    favorited_topics.where(id: topic.id).count > 0
+  end
 end

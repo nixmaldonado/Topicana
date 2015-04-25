@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
+#  resources :favorites
+
+  put "/topics/:id/favorites" => "favorites#update", as: :favorite
+
+
   root to: "home#index"
 
 

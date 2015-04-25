@@ -5,16 +5,20 @@ class TopicsController < ApplicationController
 
   def create
     if current_user.admin?
-      @topic = Topic.create(topic_params)
-      redirect_to topics_path
+      @topic = current_user.topics.create(topic_params)
+
+      redirect_to topics_path, notice: "Topic created master!"
+      unless @topic.save
+        redirect_to topics_path notice: "Topic not created!"
+      end
     else
-      redirect_to topics_path
+      redirect_to topics_path, notice: "You must be admin to create Topics!"
     end
   end
 
 
   def new
-    @topic = Topic.new
+    @topic = current_user.topics.build
   end
 
   def index
