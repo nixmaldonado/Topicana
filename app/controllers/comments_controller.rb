@@ -11,15 +11,6 @@ class CommentsController < ApplicationController
     redirect_to topic_path(@topic)
   end
 
-  def flag
-    @comment.flag!
-    redirect_to topic_path(@topic)
-  end
-
-  def unflag
-    @comment.unflag!
-    redirect_to topic_path(@topic)
-  end
 
 
 #  Por razones de seguridad es convenienete siempre traer la informacion

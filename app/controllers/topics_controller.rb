@@ -1,9 +1,15 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!
-  #before_action :verify_admin!, only: :create
+
+
+  before_action :authenticate_user!, except: [:show, :index]
+
   def create
-    @topic = Topic.create(topic_params)
-    redirect_to topics_path
+    if current_user.admin?
+      @topic = Topic.create(topic_params)
+      redirect_to topics_path
+    else
+      redirect_to topics_path
+    end
   end
 
 

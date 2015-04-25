@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :comments do
-      member do
-        put :flag
-        put :unflag
-      end
     end
   end
 
