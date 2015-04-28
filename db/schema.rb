@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425180707) do
+ActiveRecord::Schema.define(version: 20150425210816) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150425180707) do
     t.integer  "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "flagged_at"
   end
 
   add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
@@ -35,13 +34,22 @@ ActiveRecord::Schema.define(version: 20150425180707) do
   add_index "favorites", ["topic_id"], name: "index_favorites_on_topic_id"
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
 
+  create_table "flags", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "flags", ["comment_id"], name: "index_flags_on_comment_id"
+  add_index "flags", ["user_id"], name: "index_flags_on_user_id"
+
   create_table "topics", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "body"
     t.string   "title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.datetime "favorited_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "topics", ["user_id"], name: "index_topics_on_user_id"

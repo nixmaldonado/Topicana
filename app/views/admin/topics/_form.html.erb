@@ -1,9 +1,10 @@
-<%= form_for @topic do |f| %>
 
-<class class="field">
+<%= form_for [:admin, topic] do |f| %>
+
+<div class"field">
   <%= f.label      :title %>
   <%= f.text_field :title %>
-</class>
+</div>
 
 <div class="field">
   <%= f.label     :body %>
@@ -15,6 +16,7 @@
   <span>or</span>
   <%= link_to "Cancel", root_path %>
 </div>
-
-
 <% end -%>
+
+
+

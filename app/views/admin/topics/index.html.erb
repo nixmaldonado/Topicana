@@ -1,0 +1,13 @@
+<h2 class="btn btn-default"><%= link_to "New Topic", new_admin_topic_path %></h2> <br><br>
+<table class="table table-striped">
+
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><strong><%= link_to "#{topic.title}", topic_path(topic) %></strong></td>
+        <td><%= topic.body %></td>
+        <td> <%= link_to "Destroy", admin_topic_path(topic), method: :delete%></td>
+        <td><%= link_to "Edit", edit_admin_topic_path(topic) %></td>
+      </tr>
+    <% end -%>
+
+</table>

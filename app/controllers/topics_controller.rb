@@ -2,32 +2,24 @@ class TopicsController < ApplicationController
 
 
   before_action :authenticate_user!, except: [:show, :index]
-
-  def create
-    if current_user.admin?
-      @topic = current_user.topics.create(topic_params)
-
-      redirect_to topics_path, notice: "Topic created master!"
-      unless @topic.save
-        redirect_to topics_path notice: "Topic not created!"
-      end
-    else
-      redirect_to topics_path, notice: "You must be admin to create Topics!"
-    end
-  end
-
-
-  def new
-    @topic = current_user.topics.build
-  end
+  before_action :get_current_topic, only: [:show, :fav, :unfav]
 
   def index
     @topics = Topic.all
   end
 
   def show
-    @topic = Topic.find(params[:id])
     @comment = @topic.comments.new
+  end
+
+  def fav
+    current_user.fav_topic!(@topic)
+    redirect_to topic_path(@topic), notice: "Topic is now favorite"
+  end
+
+  def unfav
+    current_user.unfav_topic!(@topic)
+    redirect_to topic_path(@topic), notice: "Topic is no longer favorite"
   end
 
   private
@@ -35,6 +27,11 @@ class TopicsController < ApplicationController
   def topic_params
     params.require(:topic).permit(:body, :title)
   end
+
+  def get_current_topic
+    @topic = Topic.find(params[:id])
+  end
+
 
 end
 

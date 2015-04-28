@@ -5,29 +5,37 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>
+        <%= link_to "Topicana", root_path%> <small>your opinion matters</small>
+      </h2>
+    </div>
 
-  <h1><%= link_to "Topicana", root_path%></h1>
-     <p>
-     <% if current_user %>
-       Logged in as <strong> <%= current_user.email %> </strong> |
-       <%= link_to "Log out",    destroy_user_session_path,method: :delete %> |
-       <% if current_user.admin? %>
-         <%= link_to "New topic", new_topic_path %>
-       <% end -%>
-      <% else %>
-        <%= link_to "Log In", user_session_path %> |
-        <%= link_to "Sign up",     new_user_registration_path %>
-      <% end -%>
-     </p>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-<hr>
-
-<%= yield %>
-
+      <div class="col-md-8">
+       <h3>
+         <% if current_user %>
+         <small>
+         Logged in as <strong> <%= current_user.email %> </strong>
+         | <%= link_to "Log out",    destroy_user_session_path,method: :delete %> |
+         <% if current_user.admin? %>
+           <%= link_to "Topics", admin_topics_path %>|
+           <%= link_to "Users", admin_users_path %>
+        <% end -%>
+        <% else %>
+          <%= link_to "Log In", user_session_path %> |
+          <%= link_to "Sign up",     new_user_registration_path %>
+           </small>
+        <% end -%>
+        </h3>
+      </div>
+  </div>
+   <p class="notice"><%= notice %></p>
+  <p class="alert" ><%= alert %></p>
+  <hr>
+  <%= yield %>
 </body>
 </html>

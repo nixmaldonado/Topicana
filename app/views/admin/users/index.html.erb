@@ -1,0 +1,12 @@
+<table class="table table-striped">
+<td><strong>User Mail</strong></td>
+<td><strong>Last Log In</strong></td>
+<td><strong>Admin?</strong></td>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.last_sign_in_at.to_datetime %></td>
+      <td><%= user.admin %></td>
+    </tr>
+  <% end -%>
+</table>
