@@ -7,35 +7,28 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <div class="row">
-    <div class="col-md-4">
-      <h2>
-        <%= link_to "Topicana", root_path%> <small>your opinion matters</small>
-      </h2>
-    </div>
-
-      <div class="col-md-8">
-       <h3>
-         <% if current_user %>
-         <small>
-         Logged in as <strong> <%= current_user.email %> </strong>
-         | <%= link_to "Log out",    destroy_user_session_path,method: :delete %> |
-         <% if current_user.admin? %>
-           <%= link_to "Topics", admin_topics_path %>|
-           <%= link_to "Users", admin_users_path %>
-        <% end -%>
-        <% else %>
-          <%= link_to "Log In", user_session_path %> |
-          <%= link_to "Sign up",     new_user_registration_path %>
-           </small>
-        <% end -%>
-        </h3>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to "TOPICANA", root_path, class: "navbar-brand" %> <p class="navbar-text">your opinion matters</p>
+          <%= link_to "About Us", about_path, class: "btn btn-default navbar-btn pull-right"%>
+        </div>
+          <% if current_user %>
+            <p class="navbar-text navbar-right">Logged in as <strong> <%= current_user.email %> </strong></p>
+            <%= link_to "Log out",    destroy_user_session_path, method: :delete, class: "btn btn-danger navbar-btn pull-right" %>
+             <% if current_user.admin? %>
+               <%= link_to "Topics", admin_topics_path, class: "btn btn-primary navbar-btn pull-right" %>
+               <%= link_to "Users", admin_users_path, class: "btn btn-primary navbar-btn pull-right" %>
+            <% end -%>
+            <% else %>
+              <%= link_to "Sign up",     new_user_registration_path, class: "btn btn-success navbar-btn pull-right" %>
+              <%= link_to "Log In", user_session_path, class: "btn btn-success navbar-btn pull-right" %>
+            <% end -%>
       </div>
-  </div>
-   <p class="notice"><%= notice %></p>
-  <p class="alert" ><%= alert %></p>
-  <hr>
-  <%= yield %>
-</body>
+    </nav>
+    <p class="notice alert-success"><%= notice %></p>
+    <p class="alert" ><%= alert %></p>
+    <%= yield %>
+  </body>
 </html>

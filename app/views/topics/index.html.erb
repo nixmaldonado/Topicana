@@ -1,10 +1,8 @@
-
-
-
-<% @topics.each do |topic| %>
-
-    <h3 ><%= link_to topic.title, topic_path(topic) %></h3>
-    <h4> <%= topic.body %> </h4>
-
-
-<% end -%>
+<h2>Current Topics</h2>
+  <div class="listgroup well">
+    <% @topics.each do |topic| %>
+      <h4 class="list-group-item-heading"><%= link_to topic.title, topic_path(topic), class: "list-group-item active" %></h4>
+      <p class="list-group-item-text"> <%= topic.body %> </p>
+      <hr>
+    <% end -%>
+  </div>

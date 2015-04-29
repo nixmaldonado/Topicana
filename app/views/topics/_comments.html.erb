@@ -1,19 +1,15 @@
 <% comments.each do |comment| %>
   <% unless comment.new_record? %>
-    <div class="comment">
-
-      <div class="comment-content">
-        <br>
+    <div class="list-group comments">
+      <div class="list-group-item">
         <p><%= comment.user.email %> said:</p>
         <p><%= comment.body %></p>
         <p class="comment-detail"><%= time_ago_in_words(comment.created_at) %> ago</p>
-
           <% if current_user && current_user.already_flagged?(comment) %>
-            <h2 class="btn btn-default"><%= link_to "Unflag", unflag_topic_comment_path(topic, comment), method: :put %></h2>
+            <%= link_to "Unflag", unflag_topic_comment_path(topic, comment), method: :put, class: "btn btn-warning btn-xs" %>
           <% else %>
-            <h2 class="btn btn-default"><%= link_to "Flag",   flag_topic_comment_path(topic, comment), method: :put %></h2>
+            <%= link_to "Flag",   flag_topic_comment_path(topic, comment), method: :put, class: "btn btn-danger btn-xs" %>
           <% end -%>
-
         <br>
       </div>
     </div>

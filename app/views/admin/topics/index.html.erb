@@ -1,13 +1,17 @@
-<h2 class="btn btn-default"><%= link_to "New Topic", new_admin_topic_path %></h2> <br><br>
+
+<%= link_to "New Topic", new_admin_topic_path, class: "btn btn-default" %><br><br>
+
 <table class="table table-striped">
-
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><strong><%= link_to "#{topic.title}", topic_path(topic) %></strong></td>
-        <td><%= topic.body %></td>
-        <td> <%= link_to "Destroy", admin_topic_path(topic), method: :delete%></td>
-        <td><%= link_to "Edit", edit_admin_topic_path(topic) %></td>
-      </tr>
-    <% end -%>
-
+  <td > <strong>TITLE</strong> </td>
+  <td > <strong>BODY</strong></td>
+  <td > <strong>EDIT</strong> </td>
+  <td > <strong>DELETE</strong> </td>
+  <% @topics.each do |topic| %>
+    <tr>
+      <td><strong><%= link_to "#{topic.title}", topic_path(topic) %></strong></td>
+      <td><%= topic.body %></td>
+      <td><%= link_to "Edit", edit_admin_topic_path(topic), class: "btn btn-xs btn-primary" %></td>
+      <td> <%= link_to "Destroy", admin_topic_path(topic), method: :delete, class: "btn btn-xs btn-primary" %></td>
+    </tr>
+  <% end -%>
 </table>

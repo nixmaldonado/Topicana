@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   before_action :get_current_topic
   before_action :get_current_comment, only: [:flag, :unflag]
 
-
   def create
     @comment          = current_user.comments.new(comment_params)
     @comment.topic_id = @topic.id

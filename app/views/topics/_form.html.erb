@@ -1,8 +1,10 @@
+<hr>
 <%= form_for @comment, url: topic_comments_path(@topic) do |f| %>
 
-  <div class="field">
-  <%= f.label     "Write your opinion" %> <br>
+  <div>
+  <%= f.label "Write your opinion" %> <br>
   <%= f.text_area :body %>
   </div>
-  <%= f.submit "Comment" %>
+  <%= f.submit "Submit", class: "btn btn-default" %>
 <% end -%>
+<br>

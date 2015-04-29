@@ -1,0 +1,22 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.navbar-right{
+  padding-right: 15px;
+}
+.navbar-brand{
+  padding-left: 15px;
+}
+
+.pull-right{
+  margin-left: 5px;
+}
+.comments{
+  padding-right: 15px
+}

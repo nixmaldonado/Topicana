@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'about' => 'static_page#about'
   root to: "topics#index"
 end

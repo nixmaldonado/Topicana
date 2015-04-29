@@ -4,4 +4,5 @@ class Comment < ActiveRecord::Base
   has_many   :flags
   has_many   :flaggers, through: :flag, source: :user
 
+  validates :user, :body, presence: true
 end

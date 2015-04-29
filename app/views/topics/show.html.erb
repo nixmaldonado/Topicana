@@ -1,20 +1,22 @@
-<h2><%= @topic.title %></h2>
-  <p><%= @topic.body %></p>
-    <% if current_user && current_user.already_favorited?(@topic) %>
-      <h2 class="btn btn-default"><%= link_to "Un-Fav!", unfav_topic_path(@topic), method: :put %></h2>
-    <% else %>
-      <h2 class="btn btn-default"><%= link_to "Fav!",    fav_topic_path(@topic),   method: :put %></h2>
-    <% end -%>
-
-<hr>
-
-<h3> Comments </h3>
-  <% if @topic.comments.any? %>
-    <div class="commentsList">
-      <%= render partial: 'topics/comments', locals: { topic: @topic, comments: @topic.comments } %>
-    </div>
-  <% end -%>
-
-  <div class="commentsForm">
-    <%= render partial: 'comments/form', locals: { topic: @topic, comments: @topic.comments } %>
+<div class="row">
+  <div class="col col-md-6">
+  <h2><%= @topic.title %></h2>
+    <p><%= @topic.body %></p>
+      <% if current_user && current_user.already_favorited?(@topic) %>
+        <%= link_to "Un-Favorite this topic", unfav_topic_path(@topic), method: :put, class: "btn btn-warning btn-sm" %>
+      <% else %>
+        <%= link_to "Favorite this topic", fav_topic_path(@topic),   method: :put, class: "btn btn-success btn-sm" %></h2>
+      <% end -%>
   </div>
+  <div class="col col-md-6">
+  <h3> Comments </h3>
+   <% if @topic.comments.any? %>
+      <div class="commentsList">
+        <%= render partial: 'topics/comments', locals: { topic: @topic, comments: @topic.comments } %>
+      </div>
+    <% end -%>
+  <div >
+    <%= render partial: 'topics/form', locals: { topic: @topic, comments: @topic.comments } %>
+   </div>
+  </div>
+</div>
