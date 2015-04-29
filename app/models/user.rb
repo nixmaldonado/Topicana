@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :favorited_topics, through: :favorites, source: :topic
 
-  #FLAG
+  validates :email, presence: true, uniqueness: true
+
+# FLAG
 
   def already_flagged?(comment)
     flagged_comments.find_by_id(comment.id)
@@ -27,7 +29,7 @@ class User < ActiveRecord::Base
     flagged_comments.delete(comment)
   end
 
-  #FAVORITE
+# FAVORITE
 
   def already_favorited?(topic)
     favorited_topics.find_by_id(topic.id)
