@@ -1,4 +1,4 @@
-Topicana
+# Topicana
 
 Un visitante puede crear una cuenta de usuario en la aplicación
 Un visitante puede loguearse en la aplicación
@@ -13,4 +13,10 @@ Un admin puede adminisitrar topicos
 Un admin puede listar comentarios publicados en un topico
 Un admin puede listar usuarios
 
+# Login
+
+email:    admin@topicana.com
+password: 123123123
+
 Developed in Rails 4.2.1
+
