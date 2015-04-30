@@ -88,10 +88,68 @@ RSpec.describe User, type: :model do
       @topic = FactoryGirl.create(:topic)
       @comment = FactoryGirl.create(:comment)
     end
-    it 'flags a comment' do
-      @user.flag_comment!(@comment)
-      result = @user.flagged_comments.include?(@comment)
-      expect(result).to eq(true)
+    context 'when a comment is not flagged' do
+      it 'flags a comment' do
+        @user.flag_comment!(@comment)
+        result = @user.flagged_comments.include?(@comment)
+        expect(result).to eq(true)
+      end
+    end
+    context 'when a comment is already flagged' do
+      before do
+        @user.flagged_comments << @comment
+      end
+      it 'returns nil' do
+        result = @user.flag_comment!(@comment)
+        expect(result).to eq(nil)
+      end
+    end
+  end
+
+  describe '#unflag_comment!' do
+    before do
+      @user = FactoryGirl.create(:user)
+      @topic = FactoryGirl.create(:topic)
+      @comment = FactoryGirl.create(:comment)
+    end
+    context 'when a comment is already flagged'do
+      before do
+        @user.flagged_comments << @comment
+      end
+      it 'unflags the comment' do
+        @user.unflag_comment!(@comment)
+        result = @user.flagged_comments.include?(@comment)
+        expect(result).to eq(false)
+      end
+    end
+    context 'when a comment is not flagged' do
+      it 'returns nil' do
+        result = @user.unflag_comment!(@comment)
+        expect(result).to eq(nil)
+      end
+    end
+  end
+
+  describe '#aleady_flagged?' do
+    before do
+      @user = FactoryGirl.create(:user)
+      @topic = FactoryGirl.create(:topic)
+      @comment = FactoryGirl.create(:comment)
+    end
+    context 'when the comment is not flagged' do
+      it 'returns nil' do
+        result = @user.already_flagged?(@comment)
+        expect(result).to eq(nil)
+      end
+    end
+    context 'when the comment is flagged' do
+      before do
+        @user.flagged_comments << @comment
+      end
+      it 'returns the comment' do
+        result = @user.already_flagged?(@comment)
+        expect(result).to eq(@comment)
+      end
     end
   end
 
