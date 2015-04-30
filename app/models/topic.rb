@@ -4,4 +4,6 @@ class Topic < ActiveRecord::Base
   has_many   :favorites
   has_many   :favoriters, through: :favorites, source: :user
 
+  validates :body, :title, presence: true
+
 end
