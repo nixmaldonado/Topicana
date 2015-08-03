@@ -11,8 +11,6 @@ class CommentsController < ApplicationController
     redirect_to topic_path(@topic)
   end
 
-
-
   def new
     @comment = current_user.comments.new
   end

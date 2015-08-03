@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :topics do
+
     member do
       put :fav
       put :unfav
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
         put :unflag
       end
     end
+
   end
 
   get 'about' => 'static_page#about'
