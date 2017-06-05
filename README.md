@@ -14,11 +14,10 @@ If you are logged in as an admin you can manage topics and all of the registered
 
 You can either create your own username and pass or use the admin credentials:
 
-Feel free to play around and share any new ideas you might have!
-
 email:    admin@topicana.com
 password: 123123123
 
+Feel free to play around and share any new ideas you might have!
 Cheers!
 
 Developed in Rails 4.2.1
