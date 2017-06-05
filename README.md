@@ -1,22 +1,25 @@
 # Topicana
 
-Un visitante puede crear una cuenta de usuario en la aplicación
-Un visitante puede loguearse en la aplicación
-Un visitante puede listar topicos publicados en la aplicación
-Un visitante puede listar todos los comentarios publicados dentro de un topico
+Simple web app to create an discuss topics. 
 
-Un usuario puede agregar un comentario dentro de un topico
-Un usuario puede marcar como favorito un topico
-Un usuario puede marcar un comentario como inapropiado
+Check out the live demo: https://topican.herokuapp.com/
 
-Un admin puede adminisitrar topicos
-Un admin puede listar comentarios publicados en un topico
-Un admin puede listar usuarios
+This app has login capabilities either as a regular user or as an admin user.
+Each topic can be comented and be marked as favorite if you have logged in.
+You can even mark a coment as inapropiate.
+
+If you are logged in as an admin you can manage topics and all of the registered users in the site.
 
 # Login
 
+You can either create your own username and pass or use the admin credentials:
+
+Feel free to play around and share any new ideas you might have!
+
 email:    admin@topicana.com
 password: 123123123
+
+Cheers!
 
 Developed in Rails 4.2.1
 
